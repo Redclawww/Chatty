@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -43,8 +44,19 @@ public class MainActivity extends AppCompatActivity {
 
         sendButton.setOnClickListener((v)->{
             String question= messageEditText.getText().toString().trim();
-            Toast.makeText(this,question,Toast.LENGTH_LONG).show();
+            addToChat(question,Message.SENT_BY_ME);
+            messageEditText.setText("");
+            welcomeTextView.setVisibility(View.GONE);
         } );
-
+    }
+    void addToChat(String message,String sentBy){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                messageList.add(new Message(message,sentBy));
+                messageAdapter.notifyDataSetChanged();
+                recyclerView.smoothScrollToPosition(messageAdapter.getItemCount());
+            }
+        });
     }
 }
