@@ -5,7 +5,15 @@ import android.widget.LinearLayout;
 import android.widget. TextView;
 import androidx.annotation. NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
+
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter. MyViewHolder> {
+    List<Message> messageList;
+    public MessageAdapter(List<Message>messagelist) {
+        this.messageList=messagelist;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -19,7 +27,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter. MyViewH
 
     @Override
     public int getItemCount() {
-        return 0;
+
+        return messageList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
