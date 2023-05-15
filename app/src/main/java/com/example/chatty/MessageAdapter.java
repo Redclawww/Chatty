@@ -1,4 +1,5 @@
 package com.example.chatty;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -17,12 +18,23 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter. MyViewH
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View chatView = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_item, null);
+        MyViewHolder myViewHolder= new MyViewHolder(chatView);
+        return myViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
+        Message message = messageList.get(position);
+        if(message.getSentBy().equals(Message.SENT_BY_ME)){
+            holder.leftChatView.setVisibility(View.GONE);
+            holder.rightChatView.setVisibility(View.VISIBLE);
+            holder.rightTextView.setText(message.getMessage());
+        }else{
+            holder.rightChatView.setVisibility(View.GONE);
+            holder.leftChatView.setVisibility(View.VISIBLE);
+            holder.leftTextView.setText(message.getMessage());
+        }
     }
 
     @Override

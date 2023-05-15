@@ -1,11 +1,13 @@
 package com.example.chatty;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     EditText messageEditText;
     ImageButton sendButton;
     List<Message> messageList;
+    MessageAdapter messageAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
         welcomeTextView=findViewById(R.id.welcome_text);
         messageEditText= findViewById(R.id.message_edit_text);
         sendButton = findViewById(R.id.send_btn);
+
+        //setup recycler view
+        messageAdapter = new MessageAdapter(messageList);
+        recyclerView.setAdapter(messageAdapter);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setStackFromEnd(true);
+        recyclerView.setLayoutManager(llm);
 
         sendButton.setOnClickListener((v)->{
             String question= messageEditText.getText().toString().trim();
