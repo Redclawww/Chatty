@@ -9,8 +9,6 @@ Features
 
     Customizable for various use cases: The application can be tailored to suit different industries and purposes, such as customer support, virtual assistants, and more.
 
-    Speech recognition and synthesis: Users can engage in conversations using their voice, thanks to speech recognition and synthesis capabilities.
-
     Enhanced language understanding: The chatbot can incorporate natural language understanding and sentiment analysis techniques to comprehend user intents and emotions accurately.
 
 Installation
