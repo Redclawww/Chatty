@@ -21,6 +21,7 @@
         android:textColor="@color/white"
         android:text=""
         android:textSize="18sp"
+        android:textIsSelectable="true"
         />
 </LinearLayout>
 
@@ -41,6 +42,7 @@
             android:textColor="@color/white"
             android:text=""
             android:textSize="18sp"
+            android:textIsSelectable="true"
             />
     </LinearLayout>
 
