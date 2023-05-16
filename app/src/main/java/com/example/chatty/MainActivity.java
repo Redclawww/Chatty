@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void addResponse(String response){
+        messageList.remove(messageList.size()-1);
         addToChat(response,Message.SENT_BY_BOT);
     }
 
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
         JSONObject jsonBody = new JSONObject();
         try {
-            jsonBody.put("model", "text-davinci-003");
+            jsonBody.put("model","text-davinci-003");
             jsonBody.put("prompt",question);
             jsonBody.put("max_tokens",4000);
             jsonBody.put("temperature",0);
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         RequestBody body = RequestBody.create(jsonBody.toString(),JSON);
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/completions")
-                .header("Authorization","Bearer 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")
+                .header("Authorization","Bearer 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")
                 .post(body)
                 .build();
 
@@ -120,12 +121,8 @@ public class MainActivity extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
-
-
-
                 }else{
-                    addResponse("Failed to load response due to "+response.body().toString());
+                    addResponse("Failed to load response due to "+response.body().string());
                 }
 
             }
