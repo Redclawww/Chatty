@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
     void callAPI(String question){
         //okhttp
+        messageList.add(new Message("Typing... ",Message.SENT_BY_BOT));
 
         JSONObject jsonBody = new JSONObject();
         try {
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         RequestBody body = RequestBody.create(jsonBody.toString(),JSON);
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/completions")
-                .header("Authorization","Bearer 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")
+                .header("Authorization","Bearer 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")
                 .post(body)
                 .build();
 
